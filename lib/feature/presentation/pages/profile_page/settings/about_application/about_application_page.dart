@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nef_app/feature/presentation/pages/profile_page/settings/about_application/privacy_policy/privacy_policy_page.dart';
 
 import '../../../../../../common/app_colors.dart';
 
@@ -82,9 +83,13 @@ class AboutPage extends StatelessWidget {
             child: Column(
               children: [
                 bottomButton(AppColors.Primary2, 'Rate app', AppColors.White,
-                    FontWeight.w600),
+                    FontWeight.w600,
+                  function: () => {},
+                ),
                 bottomButton(Colors.transparent, 'Privacy policy',
-                    AppColors.Secondary, FontWeight.w400),
+                    AppColors.Secondary, FontWeight.w400,
+                  function: () => {Navigator.pushNamed(context, PrivacyPage.routeName)},
+                ),
               ],
             ),
           ),
@@ -93,13 +98,13 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  bottomButton(buttonColor, text, textColor, textWeight,) {
+  bottomButton(buttonColor, text, textColor, textWeight, {required Function function}) {
     return Padding(
       padding: const EdgeInsets.only(
         bottom: 8,
       ),
       child: InkWell(
-        onTap: () => {},
+        onTap: () { function();},
         child: Ink(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(

@@ -8,6 +8,7 @@ import 'feature/presentation/pages/profile_page/payment_method/main/payment_meth
 import 'feature/presentation/pages/profile_page/settings/About_application/about_application_page.dart';
 import 'feature/presentation/pages/profile_page/settings/Contacts/contacts_page.dart';
 import 'feature/presentation/pages/profile_page/settings/FAQ/faq_page.dart';
+import 'feature/presentation/pages/profile_page/settings/about_application/privacy_policy/privacy_policy_page.dart';
 import 'feature/presentation/pages/profile_page/settings/language/language_page.dart';
 import 'feature/presentation/pages/profile_page/settings/main/settings_page.dart';
 
@@ -78,6 +79,13 @@ class RouteGenerator {
       return MaterialPageRoute(
           builder: (context) {
             return AboutPage();
+          }
+      );
+    }
+    else if (settings.name == PrivacyPage.routeName) {
+      return MaterialPageRoute(
+          builder: (context) {
+            return PrivacyPage();
           }
       );
     }

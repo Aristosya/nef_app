@@ -9,6 +9,7 @@ class ContactsPage extends StatelessWidget {
   ContactsPage({super.key});
 
   String eMail = 'info@nefkazakhstan.com';
+  String tel = '+7 (727) 111 22 33';
   static const routeName = '/profile/settings/contacts';
 
   @override
@@ -119,7 +120,7 @@ class ContactsPage extends StatelessWidget {
                       child: Column(
                         children: [
                           InkWell(
-                            onTap: () => {},
+                            onTap: () => callTo(),
                             child: Column(
                               children: [
                                 Row(
@@ -149,7 +150,7 @@ class ContactsPage extends StatelessWidget {
                                         vertical: 11,
                                       ),
                                       child: Text(
-                                        '+7 (727) 111 22 33',
+                                        tel,
                                         style: TextStyle(
                                             color: AppColors.Secondary,
                                             fontWeight: FontWeight.w400,
@@ -172,10 +173,16 @@ class ContactsPage extends StatelessWidget {
       ),
     );
   }
-
-Future  sendMail() async {
+  sendMail() {
     final url = 'mailto:$eMail';
-
-    if (await canLaunchUrlString(url)) {await launchUrlString(url);}
+    launchTo(url);
+    }
+  callTo() {
+    final url = 'tel:$tel';
+    launchTo(url);
   }
+}
+
+Future launchTo(url) async
+{if (await canLaunchUrlString(url)) {await launchUrlString(url);}
 }

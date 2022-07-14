@@ -266,11 +266,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               ],
                             ),
                           ),
-                          Container(
-                            width: 327,
-                            height: 1,
-                            decoration: BoxDecoration(
-                              color: AppColors.Grey2,
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              height: 1,
+                              decoration: BoxDecoration(
+                                color: AppColors.Grey2,
+                              ),
                             ),
                           ),
                         ],
@@ -339,11 +341,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               ],
                             ),
                           ),
-                          Container(
-                            width: 327,
-                            height: 1,
-                            decoration: BoxDecoration(
-                              color: AppColors.Grey2,
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              height: 1,
+                              decoration: BoxDecoration(
+                                color: AppColors.Grey2,
+                              ),
                             ),
                           ),
                         ],
