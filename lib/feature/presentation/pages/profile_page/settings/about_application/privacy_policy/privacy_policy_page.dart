@@ -15,6 +15,14 @@ class PrivacyPage extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           toolbarHeight: 44.0,
+          title: Text(
+            'Privacy Policy',
+            style: TextStyle(
+                color: AppColors.Secondary,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'SFProDisplay',
+                fontSize: 17),
+          ),
           leading: SizedBox.shrink(),
           actions: [
             IconButton(
@@ -28,6 +36,7 @@ class PrivacyPage extends StatelessWidget {
               },
             ),
           ],
+          centerTitle: true,
           elevation: 0.0,
           backgroundColor: AppColors.Background1,
         ),

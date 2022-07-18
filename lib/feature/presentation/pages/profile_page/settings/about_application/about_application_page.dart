@@ -36,6 +36,7 @@ class AboutPage extends StatelessWidget {
               fontFamily: 'SFProDisplay',
               fontSize: 17),
         ),
+        centerTitle: true,
         elevation: 0.0,
         backgroundColor: AppColors.Background1,
       ),

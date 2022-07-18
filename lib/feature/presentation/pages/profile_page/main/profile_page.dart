@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../common/app_colors.dart';
 import '../../home_page/home_page.dart';
+import '../booking_history/main/booking_history_page.dart';
 import '../payment_method/main/payment_method_page.dart';
 import '../settings/main/settings_page.dart';
 
@@ -55,6 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             )
           ],
+          centerTitle: true,
           elevation: 0.0,
           backgroundColor: AppColors.Background1,
         ),
@@ -280,7 +282,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     InkWell(
                       //todo: go to Booking history
-                      onTap: () => {},
+                      onTap: () => {Navigator.pushNamed(context, BookingHistoryPage.routeName)},
                       child: Column(
                         children: [
                           SizedBox(

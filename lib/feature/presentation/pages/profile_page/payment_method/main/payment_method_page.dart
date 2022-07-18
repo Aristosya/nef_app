@@ -8,7 +8,7 @@ import 'add_a_card/main_add_a_card/add_a_card_page.dart';
 class PaymentPage extends StatelessWidget {
   const PaymentPage({super.key});
 
-  static const routeName = '/profile/payment';
+  static const routeName = '/profile/payment-methods';
 
 
   @override

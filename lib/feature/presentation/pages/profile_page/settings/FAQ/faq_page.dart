@@ -35,6 +35,7 @@ class FaqPage extends StatelessWidget {
               fontFamily: 'SFProDisplay',
               fontSize: 17),
         ),
+        centerTitle: true,
         elevation: 0.0,
         backgroundColor: AppColors.Background1,
       ),
@@ -144,6 +145,11 @@ class _FAQExpanderWidgetState extends State<FAQExpanderWidget> {
                           Flexible(
                             child: Text(
                                 'Risus, ut blandit cursus commodo varius malesuada. Consequat, accumsan augue vel gravida turpis. Hac massa massa pretium nulla risus ullamcorper at gravida.',
+                                style: TextStyle(
+                                    color: AppColors.Grey1,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'SFProDisplay',
+                                    fontSize: 15),
                             overflow: TextOverflow.visible),
                           )
                         ]),

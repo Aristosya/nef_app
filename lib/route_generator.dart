@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'feature/presentation/pages/home_page/home_page.dart';
 import 'feature/presentation/pages/error_page/error_page.dart';
+import 'feature/presentation/pages/profile_page/booking_history/main/booking_history_page.dart';
 import 'feature/presentation/pages/profile_page/main/profile_page.dart';
 import 'feature/presentation/pages/profile_page/payment_method/main/add_a_card/main_add_a_card/add_a_card_page.dart';
 import 'feature/presentation/pages/profile_page/payment_method/main/add_a_card/success_add_a_card/success_added_page.dart';
@@ -86,6 +87,13 @@ class RouteGenerator {
       return MaterialPageRoute(
           builder: (context) {
             return PrivacyPage();
+          }
+      );
+    }
+    else if (settings.name == BookingHistoryPage.routeName) {
+      return MaterialPageRoute(
+          builder: (context) {
+            return BookingHistoryPage();
           }
       );
     }
