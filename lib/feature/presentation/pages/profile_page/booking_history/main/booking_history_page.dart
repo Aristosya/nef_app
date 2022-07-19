@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nef_app/feature/presentation/pages/profile_page/booking_history/main/widgets/bookinglist.dart';
 
 import '../../../../../../common/app_colors.dart';
+import '../../../../widgets/appbars.dart';
+import '../../../../widgets/texts.dart';
 
 class BookingHistoryPage extends StatefulWidget {
   const BookingHistoryPage({super.key});
@@ -19,34 +21,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 44.0,
-          leading: Container(
-            width: 24,
-            height: 24,
-            child: IconButton(
-              icon: SvgPicture.asset(
-                'assets/icons/chevron-left.svg',
-                color: AppColors.Primary2,
-                semanticsLabel: 'Arrow-back',
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          title: Text(
-            'Booking history',
-            style: TextStyle(
-                color: AppColors.Secondary,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'SFProDisplay',
-                fontSize: 17),
-          ),
-          centerTitle: true,
-          elevation: 0.0,
-          backgroundColor: AppColors.Background1,
-        ),
+        appBar: AppBars().back_noRight(context,'Booking history'),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -84,7 +59,8 @@ class _BookingHistoryPageState extends State<BookingHistoryPage> {
               ],
             ),
           ),
-        ));
+        ),
+    );
   }
 
   InkWell currentToggle() {
@@ -122,12 +98,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage> {
                       vertical: 8.0,
                     ),
                     child: Center(
-                      child: Text('Current',
-                          style: TextStyle(
-                              color: AppColors.White,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'SFProDisplay',
-                              fontSize: 15)),
+                      child: Texts().body2('Current'),
                     ),
                   ),
                 ),
@@ -135,12 +106,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage> {
             ),
             Expanded(
               child: Center(
-                child: Text('Completed',
-                    style: TextStyle(
-                        color: AppColors.Grey1,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'SFProDisplay',
-                        fontSize: 15)),
+                child: Texts().body2('Completed',color: AppColors.Grey1),
               ),
             ),
           ],
@@ -167,12 +133,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage> {
           children: [
             Expanded(
               child: Center(
-                child: Text('Current',
-                    style: TextStyle(
-                        color: AppColors.Grey1,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'SFProDisplay',
-                        fontSize: 15)),
+                child: Texts().body2('Current',color: AppColors.Grey1),
               ),
             ),
             Expanded(
@@ -194,12 +155,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage> {
                       vertical: 8.0,
                     ),
                     child: Center(
-                      child: Text('Completed',
-                          style: TextStyle(
-                              color: AppColors.White,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'SFProDisplay',
-                              fontSize: 15)),
+                      child: Texts().body2('Completed'),
                     ),
                   ),
                 ),

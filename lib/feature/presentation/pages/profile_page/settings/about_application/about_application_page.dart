@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nef_app/feature/presentation/pages/profile_page/settings/about_application/privacy_policy/privacy_policy_page.dart';
 
 import '../../../../../../common/app_colors.dart';
+import '../../../../widgets/texts.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -21,21 +22,13 @@ class AboutPage extends StatelessWidget {
             icon: SvgPicture.asset(
               'assets/icons/chevron-left.svg',
               color: AppColors.Primary2,
-              semanticsLabel: 'Arrow-back',
             ),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
         ),
-        title: Text(
-          'About application',
-          style: TextStyle(
-              color: AppColors.Secondary,
-              fontWeight: FontWeight.w500,
-              fontFamily: 'SFProDisplay',
-              fontSize: 17),
-        ),
+        title: Texts().heading3('About application',color: AppColors.Secondary,),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: AppColors.Background1,
@@ -55,7 +48,6 @@ class AboutPage extends StatelessWidget {
                   height: 212,
                   width: 208,
                   'assets/icons/logo-nef.svg',
-                  semanticsLabel: 'Logo application',
                 ),
               ),
               Padding(
@@ -63,15 +55,7 @@ class AboutPage extends StatelessWidget {
                   left: 81,
                   right: 81,
                 ),
-                child: Text(
-                  'Version of application v.3.13.3',
-                  style: TextStyle(
-                      color: AppColors.Grey1,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'SFProDisplay',
-                      fontSize: 15),
-                  textAlign: TextAlign.center,
-                ),
+                child: Texts().body2( 'Version of application v.3.13.3',color: AppColors.Grey1,)
               ),
             ],
           ),

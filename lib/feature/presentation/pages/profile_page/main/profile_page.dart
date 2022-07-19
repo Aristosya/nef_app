@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../common/app_colors.dart';
+import '../../../widgets/appbars.dart';
+import '../../../widgets/bottombars.dart';
+import '../../../widgets/texts.dart';
 import '../../home_page/home_page.dart';
 import '../booking_history/main/booking_history_page.dart';
 import '../payment_method/main/payment_method_page.dart';
 import '../settings/main/settings_page.dart';
 
-// TO NON ADAPTIVE SCREEN JUST UNCOMMENT 'width:343'
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -32,41 +34,15 @@ class _ProfilePageState extends State<ProfilePage> {
         }),
       },
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 44.0,
-          title: Center(
-            child: Text(
-              'Profile',
-              style: TextStyle(
-                  color: AppColors.Secondary,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'SFProDisplay',
-                  fontSize: 17),
-            ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () => {},
-              icon: SvgPicture.asset(
-                'assets/icons/notification.svg',
-                color: AppColors.Grey1,
-                semanticsLabel: 'Notification',
-                width: 18,
-                height: 20,
-              ),
-            )
-          ],
-          centerTitle: true,
-          elevation: 0.0,
-          backgroundColor: AppColors.Background1,
-        ),
+        appBar: AppBars().right_noLeft('Profile',
+            asset_icon: 'assets/icons/notification.svg',
+            color_icon: AppColors.Grey1, onTap_icon: null,),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
               child: Container(
-                // width: 343,
                 height: 116,
                 decoration: BoxDecoration(
                   color: AppColors.White,
@@ -93,71 +69,27 @@ class _ProfilePageState extends State<ProfilePage> {
                           Container(
                             width: 100,
                             height: 100,
-                            decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(50)),),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50)),
+                            ),
                             child: Material(
                               color: Colors.transparent,
                               child: InkWell(
                                 customBorder: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(100))
-                                ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(100))),
                                 onTap: () => {
                                   setState(() {
                                     showEdit = !showEdit;
-                                  }),},
+                                  }),
+                                },
                               ),
                             ),
                           ),
                           (() {
                             if (showEdit) {
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  SizedBox(
-                                    width: 100,
-                                    height: 51,
-                                  ),
-                                  Material(
-                                    color: Colors.transparent,
-                                    child: InkWell(
-                                      customBorder: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(50),
-                                            bottomRight: Radius.circular(50)),
-                                      ),
-                                      onTap: () => {print('Edited')},
-                                      child: Container(
-                                        width: 100,
-                                        height: 49,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              AppColors.Secondary.withOpacity(
-                                                  0.6),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(50),
-                                            bottomRight: Radius.circular(50),
-                                            topLeft: Radius.circular(0),
-                                            topRight: Radius.circular(0),
-                                          ),
-                                          shape: BoxShape.rectangle,
-                                        ),
-                                        child: Center(
-                                          child: SizedBox(
-                                            width: 20,
-                                            height: 20,
-                                            child: SvgPicture.asset(
-                                              'assets/icons/edit-alt.svg',
-                                              color: AppColors.Primary2,
-                                              semanticsLabel: 'Edit',
-                                              width: 15,
-                                              height: 15,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
+                              return showEditWidget();
                             }
                             return SizedBox.shrink();
                           }()),
@@ -169,24 +101,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'John Doe',
-                          style: TextStyle(
-                            color: AppColors.Primary1,
-                            fontFamily: 'SFProDisplay',
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Text(
-                          'johndoe@gmail.com',
-                          style: TextStyle(
-                            color: AppColors.Grey1,
-                            fontFamily: 'SFProDisplay',
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        Texts().heading3('John Doe', color: AppColors.Primary1),
+                        Texts().small1_medium('johndoe@gmail.com',
+                            color: AppColors.Grey1),
                       ],
                     ),
                   ],
@@ -196,7 +113,6 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 16),
               child: Ink(
-                // width: 343,
                 height: 133,
                 decoration: BoxDecoration(
                   color: AppColors.White,
@@ -205,217 +121,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    InkWell(
-                      onTap: () =>
-                          {Navigator.pushNamed(context, PaymentPage.routeName)},
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            // width: 343,
-                            height: 43,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8, 12, 16, 12),
-                                  child: SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: SvgPicture.asset(
-                                      'assets/icons/credit-card.svg',
-                                      color: AppColors.Primary2,
-                                      semanticsLabel: 'Payment',
-                                      width: 16.67,
-                                      height: 13.33,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 11, 0, 11),
-                                    child: Text(
-                                      'Payment method',
-                                      style: TextStyle(
-                                        color: AppColors.Secondary,
-                                        fontFamily: 'SFProDisplay',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 8, 0),
-                                  child: SizedBox(
-                                    width: 24,
-                                    height: 24,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          9, 6, 8, 6),
-                                      child: SvgPicture.asset(
-                                        'assets/icons/chevron-right.svg',
-                                        color: AppColors.Primary2,
-                                        semanticsLabel: 'Arrow-right',
-                                        width: 7,
-                                        height: 12,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Container(
-                              height: 1,
-                              decoration: BoxDecoration(
-                                color: AppColors.Grey2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      //todo: go to Booking history
-                      onTap: () => {Navigator.pushNamed(context, BookingHistoryPage.routeName)},
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            // width: 343,
-                            height: 43,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8, 12, 16, 12),
-                                  child: SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: SvgPicture.asset(
-                                      'assets/icons/clipboard.svg',
-                                      color: AppColors.Primary2,
-                                      semanticsLabel: 'Booking',
-                                      width: 13.33,
-                                      height: 16.67,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 11, 0, 11),
-                                    child: Text(
-                                      'Booking history',
-                                      style: TextStyle(
-                                        color: AppColors.Secondary,
-                                        fontFamily: 'SFProDisplay',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 8, 0),
-                                  child: SizedBox(
-                                    width: 24,
-                                    height: 24,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          9, 6, 8, 6),
-                                      child: SvgPicture.asset(
-                                        'assets/icons/chevron-right.svg',
-                                        color: AppColors.Primary2,
-                                        semanticsLabel: 'Arrow-right',
-                                        width: 7,
-                                        height: 12,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Container(
-                              height: 1,
-                              decoration: BoxDecoration(
-                                color: AppColors.Grey2,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => {Navigator.pushNamed(context, SettingsPage.routeName)},
-                      child: SizedBox(
-                        // width: 343,
-                        height: 45,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(8, 12, 16, 12),
-                              child: SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: SvgPicture.asset(
-                                  'assets/icons/settings.svg',
-                                  color: AppColors.Primary2,
-                                  semanticsLabel: 'Settings',
-                                  width: 16.67,
-                                  height: 16.67,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 11, 0, 11),
-                                child: Text(
-                                  'Settings',
-                                  style: TextStyle(
-                                    color: AppColors.Secondary,
-                                    fontFamily: 'SFProDisplay',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-                              child: SizedBox(
-                                width: 24,
-                                height: 24,
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      9, 6, 8, 6),
-                                  child: SvgPicture.asset(
-                                    'assets/icons/chevron-right.svg',
-                                    color: AppColors.Primary2,
-                                    semanticsLabel: 'Arrow-right',
-                                    width: 7,
-                                    height: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    buildLine(context,routeName: PaymentPage.routeName, asset_icon: 'assets/icons/credit-card.svg', title: 'Payment method', addDevider: true),
+                    buildLine(context,routeName: BookingHistoryPage.routeName, asset_icon: 'assets/icons/clipboard.svg', title: 'Booking history',addDevider: true),
+                    buildLine(context,routeName: SettingsPage.routeName, asset_icon: 'assets/icons/settings.svg', title: 'Settings',addDevider: false),
                   ],
                 ),
               ),
@@ -425,142 +133,131 @@ class _ProfilePageState extends State<ProfilePage> {
               child: InkWell(
                 //todo Go to log out
                 onTap: () => {},
-                child: Text(
-                  'Log out',
-                  style: TextStyle(
-                    color: AppColors.Error,
-                    fontFamily: 'SFProDisplay',
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                child: Texts().body2('Log out', color: AppColors.Error),
               ),
             ),
           ],
         ),
-        bottomNavigationBar: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(6),
-            topLeft: Radius.circular(6),
+        bottomNavigationBar: BotoomNefBar(
+          routeName: ProfilePage.routeName,
+        ),
+      ),
+    );
+  }
+
+  InkWell buildLine(BuildContext context, {required routeName, required asset_icon, required title, required bool addDevider}) {
+    return InkWell(
+      onTap: () => {Navigator.pushNamed(context, routeName)},
+      child: Column(
+        children: [
+          SizedBox(
+            height: 43,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8, 12, 16, 12),
+                  child: SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: SvgPicture.asset(
+                      asset_icon,
+                      color: AppColors.Primary2,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 11, 0, 11),
+                    child:Texts().body1(title,color: AppColors.Secondary)
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                  child: SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(9, 6, 8, 6),
+                      child: SvgPicture.asset(
+                        'assets/icons/chevron-right.svg',
+                        color: AppColors.Primary2,
+                        semanticsLabel: 'Arrow-right',
+                        width: 7,
+                        height: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          child: Container(
-            height: 97,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(100))),
-            child: BottomAppBar(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        margin: EdgeInsets.only(
-                          top: 16,
-                          bottom: 2,
-                        ),
-                        child: IconButton(
-                          icon: SvgPicture.asset(
-                            'assets/icons/home.svg',
-                            color: AppColors.Grey1,
-                            semanticsLabel: 'Home',
-                            width: 25,
-                            height: 23.75,
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder:
-                                    (context, animation1, animation2) =>
-                                        HomePage(),
-                                transitionDuration: Duration.zero,
-                                reverseTransitionDuration: Duration.zero,
-                              ),
-                            );
-                          },
-                          padding: EdgeInsets.zero,
-                        ),
-                      ),
-                      Text(
-                        'Main',
-                        style: TextStyle(
-                            color: AppColors.Grey1,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 10,
-                            fontFamily: 'SFProDisplay'),
-                      ),
-                    ],
+          ((){
+            if(addDevider){
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Container(
+                  height: 1,
+                  decoration: BoxDecoration(
+                    color: AppColors.Grey2,
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        margin: EdgeInsets.only(
-                          top: 16,
-                          bottom: 2,
-                        ),
-                        child: IconButton(
-                          icon: SvgPicture.asset(
-                            'assets/icons/tab-bar-phase.svg',
-                            color: AppColors.Grey1,
-                            semanticsLabel: 'Booking',
-                            width: 26.88,
-                            height: 21.88,
-                          ),
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                        ),
-                      ),
-                      Text(
-                        'Online booking',
-                        style: TextStyle(
-                            color: AppColors.Grey1,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 10,
-                            fontFamily: 'SFProDisplay'),
-                      ),
-                    ],
+                ),
+              );
+            }
+            return SizedBox.shrink();
+          }())
+        ],
+      ),
+    );
+  }
+
+  Widget showEditWidget() {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        SizedBox(
+          width: 100,
+          height: 51,
+        ),
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50)),
+            ),
+            // todo Go to edit image
+            onTap: () => {},
+            child: Container(
+              width: 100,
+              height: 49,
+              decoration: BoxDecoration(
+                color:
+                AppColors.Secondary.withOpacity(
+                    0.6),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50),
+                ),
+                shape: BoxShape.rectangle,
+              ),
+              child: Center(
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: SvgPicture.asset(
+                    'assets/icons/edit-alt.svg',
+                    color: AppColors.Primary2,
+                    width: 15,
+                    height: 15,
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        margin: EdgeInsets.only(
-                          top: 16,
-                          bottom: 2,
-                        ),
-                        child: IconButton(
-                          icon: SvgPicture.asset(
-                            'assets/icons/user.svg',
-                            color: AppColors.Primary2,
-                            semanticsLabel: 'Profile',
-                            width: 22.5,
-                            height: 25,
-                          ),
-                          onPressed: () {},
-                          padding: EdgeInsets.zero,
-                        ),
-                      ),
-                      Text(
-                        'Profile',
-                        style: TextStyle(
-                            color: AppColors.Primary2,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 10,
-                            fontFamily: 'SFProDisplay'),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

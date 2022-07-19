@@ -15,90 +15,35 @@ import 'feature/presentation/pages/profile_page/settings/main/settings_page.dart
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(dynamic settings) {
-    if (settings.name == '/') {
-      return MaterialPageRoute(builder: (context) {
-        return const HomePage();
-      });
-    }
-    else if (settings.name == ProfilePage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return ProfilePage();
-          }
-      );
-    }
-    else if (settings.name == PaymentPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return PaymentPage();
-          }
-      );
-    }
-    else if (settings.name == AddACardPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return AddACardPage();
-          }
-      );
-    }
-    else if (settings.name == SuccessAddedPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return SuccessAddedPage();
-          }
-      );
-    }
-    else if (settings.name == SettingsPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return SettingsPage();
-          }
-      );
-    }
-    else if (settings.name == LanguagePage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return LanguagePage();
-          }
-      );
-    }
-    else if (settings.name == ContactsPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return ContactsPage();
-          }
-      );
-    }
-    else if (settings.name == FaqPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return FaqPage();
-          }
-      );
-    }
-    else if (settings.name == AboutPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return AboutPage();
-          }
-      );
-    }
-    else if (settings.name == PrivacyPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return PrivacyPage();
-          }
-      );
-    }
-    else if (settings.name == BookingHistoryPage.routeName) {
-      return MaterialPageRoute(
-          builder: (context) {
-            return BookingHistoryPage();
-          }
-      );
-    }
-    return MaterialPageRoute(builder: (context) => const ErrorPage());
+    return MaterialPageRoute(builder: (context) {
+      switch (settings.name) {
+        case HomePage.routeName:
+          return const HomePage();
+        case ProfilePage.routeName:
+          return ProfilePage();
+        case PaymentPage.routeName:
+          return PaymentPage();
+        case AddACardPage.routeName:
+          return AddACardPage();
+        case SuccessAddedPage.routeName:
+          return SuccessAddedPage();
+        case SettingsPage.routeName:
+          return SettingsPage();
+        case LanguagePage.routeName:
+          return LanguagePage();
+        case ContactsPage.routeName:
+          return ContactsPage();
+        case FaqPage.routeName:
+          return FaqPage();
+        case AboutPage.routeName:
+          return AboutPage();
+        case PrivacyPage.routeName:
+          return PrivacyPage();
+        case BookingHistoryPage.routeName:
+          return BookingHistoryPage();
+        default:
+          return ErrorPage();
+      }
+    });
   }
 }
-
-

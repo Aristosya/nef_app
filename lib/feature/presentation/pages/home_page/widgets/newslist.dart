@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../../common/app_colors.dart';
+import '../../../widgets/texts.dart';
 
 class NewsList extends StatelessWidget {
   String img;
@@ -15,12 +16,12 @@ class NewsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
         children: [
           InkWell(
             onTap: () => {},
             child: Container(
-              height: 140,
-              // margin: EdgeInsets.only(bottom: 8.0),
+              // height: 140,
               child: Ink(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6), color: AppColors.White),
@@ -40,52 +41,30 @@ class NewsList extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                        child: Container(
-                          width: 159,
-                          height: 124,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                                child: Text(
-                                  title,
-                                  style: TextStyle(
-                                    fontFamily: 'SFProDisplay',
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.Secondary
-                                  ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+                          child: Container(
+                            // width: 159,
+                            // height: 124,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                                  child: Texts().heading3(title, color: AppColors.Secondary),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                                child: Text(
-                                  date,
-                                  style: TextStyle(
-                                    fontFamily: 'SFProDisplay',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.Grey1,
-                                  ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                                  child: Texts().small2_medium(date,color:AppColors.Grey1)
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                                child: Text(
-                                  prevText,
-                                  style: TextStyle(
-                                    fontFamily: 'SFProDisplay',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 13,
-                                    color: AppColors.Grey1,
-                                  ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                                  child: Texts().small1_regular(prevText,color: AppColors.Grey1)
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../../../../../../common/app_colors.dart';
+import '../../../../../../widgets/appbars.dart';
+import '../../../../../../widgets/texts.dart';
 
 class SuccessAddedPage extends StatelessWidget {
   const SuccessAddedPage({super.key});
@@ -12,24 +14,7 @@ class SuccessAddedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          toolbarHeight: 44.0,
-          leading: SizedBox.shrink(),
-          actions: [
-            IconButton(
-              icon: SvgPicture.asset(
-                'assets/icons/close.svg',
-                color: AppColors.Primary2,
-                semanticsLabel: 'Close page',
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-          elevation: 0.0,
-          backgroundColor: AppColors.Background1,
-        ),
+        appBar: AppBars().close(context),
         body: Padding(
           padding: const EdgeInsets.only(left: 16, right:16 ),
           child: Column(
@@ -40,8 +25,7 @@ class SuccessAddedPage extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(
-                      left: 92, right: 91, bottom: 41),
+                  margin: EdgeInsets.fromLTRB(92,0,91,41),
                   decoration: BoxDecoration(
                     color: AppColors.Primary2.withOpacity(0.2),
                     borderRadius: BorderRadius.all(
@@ -58,17 +42,10 @@ class SuccessAddedPage extends StatelessWidget {
                   ),
                 ),
               ),
-                Text(
-                  'Your bank card is successfully added',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: AppColors.Primary1,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'SFProDisplay',
-                      fontSize: 21),
-                ),
+                Texts().heading2('Your bank card is successfully added',color: AppColors.Primary1)
             ],
           ),
         ));
   }
+
 }

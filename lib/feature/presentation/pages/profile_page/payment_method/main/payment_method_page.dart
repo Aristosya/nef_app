@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:nef_app/feature/presentation/pages/profile_page/payment_method/widgets/creditcard.dart';
 
 import '../../../../../../common/app_colors.dart';
+import '../../../../widgets/appbars.dart';
 import 'add_a_card/main_add_a_card/add_a_card_page.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -14,42 +15,7 @@ class PaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 44.0,
-        leading: Container(
-          width: 24,
-          height: 24,
-          child: IconButton(icon:SvgPicture.asset(
-            'assets/icons/chevron-left.svg',
-            color: AppColors.Primary2,
-            semanticsLabel: 'Arrow-back',
-          ), onPressed: () {Navigator.pop(context) ; },),
-        ),
-        title: Center(
-          child: Text(
-            'Payment method',
-            style: TextStyle(
-                color: AppColors.Secondary,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'SFProDisplay',
-                fontSize: 17),
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () => {},
-            icon: SvgPicture.asset(
-              'assets/icons/edit-alt.svg',
-              color: AppColors.Grey1,
-              semanticsLabel: 'Notification',
-              width: 15,
-              height: 15,
-            ),
-          )
-        ],
-        elevation: 0.0,
-        backgroundColor: AppColors.Background1,
-      ),
+      appBar: AppBars().back_right(context,asset_icon: 'assets/icons/edit-alt.svg', color_icon: AppColors.Grey1, onTap_icon: null, title: 'Payment method', height_icon: 15, width_icon: 15,),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -84,7 +50,6 @@ class PaymentPage extends StatelessWidget {
                             child: SvgPicture.asset(
                               'assets/icons/add.svg',
                               color: AppColors.Primary2,
-                              semanticsLabel: 'Add payment',
                               width: 16,
                               height: 16,
                             ),
@@ -97,7 +62,6 @@ class PaymentPage extends StatelessWidget {
                               fontFamily: 'SFProDisplay',
                               fontSize: 17),
                         )
-
                       ],
                     ),
                   ),

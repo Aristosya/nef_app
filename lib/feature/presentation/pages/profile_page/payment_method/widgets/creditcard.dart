@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../common/app_colors.dart';
+import '../../../../widgets/texts.dart';
 
 
 class CreditCard extends StatelessWidget {
@@ -57,12 +58,10 @@ class CreditCard extends StatelessWidget {
                             child: mastercard ?
                             SvgPicture.asset(
                               'assets/icons/mastercard.svg',
-                              semanticsLabel: 'Mastercard',
                               width: 7,
                               height: 12,
                             ):SvgPicture.asset(
                               'assets/icons/visa.svg',
-                              semanticsLabel: 'Visa',
                               width: 7,
                               height: 12,
                             ),
@@ -74,21 +73,12 @@ class CreditCard extends StatelessWidget {
                             SvgPicture.asset(
                               'assets/icons/dots-card.svg',
                               color: AppColors.Secondary,
-                              semanticsLabel: 'Hidden number card',
                             ),
                             Container(
                               margin: EdgeInsets.only(left: 8,),
-                              child: Text(
-                                card_digits,
-                                style: TextStyle(
-                                    color: AppColors.Secondary,
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'SFProDisplay',
-                                    fontSize: 15),
+                              child: Texts().body1(card_digits,color: AppColors.Secondary,),
                               ),
-                            )
                           ],
-
                           ),
                         ),
                       ],

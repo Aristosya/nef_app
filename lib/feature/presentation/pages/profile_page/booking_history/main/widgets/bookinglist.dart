@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../../common/app_colors.dart';
+import '../../../../../widgets/texts.dart';
 
 class BookingCard extends StatelessWidget {
   bool isCurrent;
@@ -60,41 +61,18 @@ class BookingCard extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                title,
-                                style: TextStyle(
-                                    color: AppColors.Secondary,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'SFProDisplay',
-                                    fontSize: 17),
-                              ),
+                              Texts().heading3(title, color: AppColors.Secondary ),
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 child: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 156,
-                                  child: Text(
-                                    description,
-                                    // softWrap: true,
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(
-                                        color: AppColors.Grey1,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'SFProDisplay',
-                                        fontSize: 13),
-                                  ),
+                                  child: Texts().small1_regular(description,color: AppColors.Grey1),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 16.0),
-                                child: Text(
-                                  duration,
-                                  style: TextStyle(
-                                      color: AppColors.Primary2,
-                                      fontWeight: FontWeight.w500,
-                                      fontFamily: 'SFProDisplay',
-                                      fontSize: 15),
-                                ),
+                                child:Texts().body2(duration,color: AppColors.Primary2),
                               ),
                             ],
                           ),
@@ -165,14 +143,7 @@ class BookingCard extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 10.0, vertical: 8.0),
-                              child: Text(
-                                'Cancel',
-                                style: TextStyle(
-                                    color: AppColors.Grey1,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'SFProDisplay',
-                                    fontSize: 13),
-                              ),
+                              child: Texts().small1_medium('Cancel',color: AppColors.Grey1),
                             ),
                           ),
                         ),
@@ -190,7 +161,6 @@ class BookingCard extends StatelessWidget {
             child: SvgPicture.asset(
               'assets/icons/$icon.svg',
               color: AppColors.Primary2,
-              semanticsLabel: 'Arrow-back',
             ),
           ),
         ),
@@ -198,14 +168,7 @@ class BookingCard extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 16.0,
           ),
-          child: Text(
-            text,
-            style: TextStyle(
-                color: AppColors.Secondary,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'SFProDisplay',
-                fontSize: 15),
-          ),
+          child:Texts().body2(text,color: AppColors.Secondary),
         ),
       ],
     );
